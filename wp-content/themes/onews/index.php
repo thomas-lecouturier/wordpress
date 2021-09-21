@@ -3,7 +3,7 @@
 <h2>Latest news</h2>
 <section id="posts">
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-        <article>
+        <article class="list">
             <?php
             $categories = get_the_category();
             foreach ($categories as $category):
@@ -13,7 +13,7 @@
             <h3 class="post-title"><?php the_title(); ?></h3>
             <div class="meta">
                 <?php echo get_avatar(get_the_author_meta('id'), 32); ?>
-                <span><strong><?php the_author(); ?></strong> le <?= get_the_date(); ?></span>
+                <span><strong><?php echo get_the_author_posts_link(); ?></strong> le <?= get_the_date(); ?></span>
             </div>
             <p class="excerpt"><?php the_excerpt(); ?></p>
             <a href="<?php the_permalink(); ?>" class="post-more">Continue reading</a>
