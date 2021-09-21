@@ -6,37 +6,15 @@
     width: 50%;
 }
 
-/* si je passe la souris sur le sélecteur je vois la spécificité (priorité CSS)
-=> 3 nombres : nb d'id, nb de classes, nb de balises
-par exemple "100" pour #welcome, "001" donc "1" pour a, donc c'est le style
-de #welcome qui gagne en cas de conflit
-*/
 #welcome {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background: url(../images/nicole.jpg) no-repeat;
-    /* cover pour couvrir l'espace disponible (et tant pis si on ne voit pas
-    l'image en entier / contain pour que l'image soit contenue dans l'élément,
-    visible entièrement (et tant pis si on a de l'espace blanc) */
     background-size: cover;
     background-position: center;
     padding: 1em;
     color: white;
-
-    /* bonus : quand on scrolle la page, on veut que la partie gauche reste
-    à la même place
-    1 - on positionne l'élément par rapport à la fenêtre du navigateur
-    (position: fixed), si on scrolle sur la page le header ne bougera pas
-    2 - mais ça ne suffit pas : maintenant le header prend le minimum de place
-    dont il a besoin, on voudrait qu'il prenne 100% de la hauteur de la page =>
-    on utilise l'unité vh, 1 vh représente 1% de la hauteur disponible sur la
-    fenêtre "viewport height" (on a aussi l'unité vw pour "viewport width")
-    3 - notre contenu a disparu... En fait il est sous l'image : le header
-    ne contraint plus le contenu car il n'est plus dans le flux HTML à cause de
-    son position: fixed, donc le contenu est collé à gauche => il va
-    falloir qu'on décale le contenu vers la droite */
-
     position: fixed;
     height: 100vh;
 }
@@ -45,38 +23,26 @@ de #welcome qui gagne en cas de conflit
     margin-left: 50%;
 }
 
-/* on ajoute ça pour écraser la couleur indiquée dans reboot.css pour a */
 #welcome a {
     color: white;
 }
 
 #welcome-logo {
-    /*background-image: url(../images/onews.svg);
-    background-repeat: no-repeat;*/
     background: url(../images/onews.svg) no-repeat;
     background-size: 35px;
-    /* on décale le contenu sur la droite pour bien voir le logo */
     padding-left: 50px;
     text-transform: uppercase;
-    width: 170px;
-    /* aligné sur la gauche et centré verticalement */ 
+    width: 170px; 
     background-position: left center;
 }
 
 #welcome-message {
-    /* indiquer les couleurs : HEX (#xxxxxx) ou RGB */
-    /* RGB : quantité de red, de green, de blue (0-255) */
-    /*background-color: rgb(150, 150, 150);*/
-    /* pour avoir de la transparence, quantité de alpha (0-1) */
     background-color: rgba(150, 150, 150, 0.5);
     text-align: right;
     padding: 1em;
-    /* augmenter la lisibilité du texte par rapport à l'image du fond */
     text-shadow: 1px 1px 2px black; 
 }
 
-/* on cible les span qui ont la classe "detail", qui sont dans un h1, qui est
-dans un élément qui à l'id welcome-message */
 #welcome-message h1 span.detail {
     font-size: 0.5em;
     font-style: italic;
@@ -111,23 +77,6 @@ dans un élément qui à l'id welcome-message */
     font-size: 14px;
 }
 
-/*.post-title {
-    margin: 1em 0;
-}*/
-/* > permet de sélectionner seulement les enfants directs */
-/* cible tous les span fils, petit-fils, etc d'un article */
-/*article span {
-
-}*/
-
-/* cible seulement les span qui sont enfant direct de l'article (pas les 
-petits-enfants) */
-/*article > span {
-
-}*/
-
-/* le caractère * représente n'importe quel élément */
-/* cible n'importe quel élément qui est un enfant direct de article */
 article > * {
     margin-bottom : 1em;
 }
@@ -142,8 +91,8 @@ article > * {
 }
 
 .meta img {
-    /* 1em représente la taille de police du parent */
     width: 2em;
+    height: 2em;
     margin-right: 0.5em;
 }
 
@@ -151,8 +100,6 @@ article > * {
     text-decoration: underline;
 }
 
-/* http://getbem.com/introduction/ */
-/* classe pour un block */
 .category-badge {
     text-transform: uppercase;
     background-color: black;
@@ -162,6 +109,7 @@ article > * {
 }
 
 /* modifiers */
+
 .category-badge--news {
     background-color: #98DC62;
 }
@@ -172,4 +120,8 @@ article > * {
 
 .category-badge--team {
     background-color: #0766F0;
+}
+
+.category-badge--dev {
+    background-color: #017997;
 }
